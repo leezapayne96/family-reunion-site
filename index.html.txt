@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Haygood Family Reunion • Orlando • July 2–6, 2026</title>
+  <meta name="description" content="Family Reunion website for July 2–6, 2026 in Orlando, Florida: RSVP, schedule, payments, and activities." />
+  <style>
+    :root{
+      --bg:#0b1020; --card:#121a33; --muted:#9fb0d0; --text:#eef3ff;
+      --accent:#7c5cff; --accent2:#35d0ba; --line:#243057;
+      --good:#43e07a; --warn:#ffd166;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      background: radial-gradient(1200px 700px at 20% 0%, rgba(124,92,255,.25), transparent 60%),
+                  radial-gradient(900px 600px at 80% 10%, rgba(53,208,186,.18), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{max-width:1100px; margin:0 auto; padding:22px}
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(11,16,32,.7);
+      border-bottom:1px solid rgba(36,48,87,.5);
+    }
+    .topbar{display:flex; gap:14px; align-items:center; justify-content:space-between; padding:12px 22px}
+    .brand{display:flex; flex-direction:column; line-height:1.1}
+    .brand b{font-size:16px}
+    .brand span{font-size:12px; color:var(--muted)}
+    nav{display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end}
+    nav a{
+      text-decoration:none; font-size:13px; color:var(--muted);
+      padding:8px 10px; border:1px solid transparent; border-radius:999px;
+    }
+    nav a:hover{border-color:rgba(159,176,208,.25); color:var(--text)}
+    .hero{
+      padding:26px 0 10px;
+      display:grid; grid-template-columns: 1.25fr .75fr; gap:18px;
+    }
+    .hcard, .card{
+      background: linear-gradient(180deg, rgba(18,26,51,.92), rgba(18,26,51,.75));
+      border:1px solid rgba(36,48,87,.7);
+      border-radius:18px; padding:18px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.28);
+    }
+    .title{font-size:34px; margin:0 0 6px}
+    .subtitle{margin:0 0 14px; color:var(--muted); line-height:1.5}
+    .pillrow{display:flex; flex-wrap:wrap; gap:10px}
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      font-size:13px; color:var(--text);
+      padding:8px 10px; border-radius:999px;
+      background: rgba(124,92,255,.14);
+      border:1px solid rgba(124,92,255,.25);
+    }
+    .pill small{color:var(--muted)}
+    .btnrow{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .btn{
+      border:1px solid rgba(36,48,87,.8);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      display:inline-flex; align-items:center; gap:8px;
+    }
+    .btn.primary{
+      border-color: rgba(124,92,255,.55);
+      background: linear-gradient(180deg, rgba(124,92,255,.95), rgba(124,92,255,.75));
+    }
+    .btn.good{
+      border-color: rgba(67,224,122,.45);
+      background: linear-gradient(180deg, rgba(67,224,122,.28), rgba(255,255,255,.06));
+    }
+    .grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:14px; margin-top:16px}
+    .col-6{grid-column: span 6}
+    .col-7{grid-column: span 7}
+    .col-5{grid-column: span 5}
+    .col-12{grid-column: span 12}
+    h2{margin:0 0 10px; font-size:22px}
+    h3{margin:0 0 8px; font-size:16px}
+    p{margin:0 0 12px; color:var(--muted); line-height:1.55}
+    .note{font-size:13px; color:var(--muted)}
+    .kpi{display:flex; gap:12px; align-items:baseline; flex-wrap:wrap}
+    .kpi b{font-size:26px}
+    .kpi span{color:var(--muted); font-size:13px}
+    .sep{height:1px; background:rgba(36,48,87,.7); margin:14px 0}
+    form{display:grid; gap:10px}
+    label{font-size:13px; color:var(--muted)}
+    input, select, textarea{
+      width:100%;
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(36,48,87,.9);
+      border-radius:12px;
+      padding:10px 12px;
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:90px; resize:vertical}
+    .two{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    .small{font-size:12px; color:var(--muted)}
+    table{width:100%; border-collapse:collapse; overflow:hidden; border-radius:14px}
+    th, td{padding:10px 10px; border-bottom:1px solid rgba(36,48,87,.7); vertical-align:top}
+    th{color:var(--text); text-align:left; font-size:13px; background:rgba(124,92,255,.12)}
+    td{color:var(--muted); font-size:13px}
+    .tag{display:inline-flex; align-items:center; gap:6px; padding:6px 8px; border-radius:999px;
+         border:1px solid rgba(36,48,87,.8); background:rgba(255,255,255,.04); font-size:12px; color:var(--muted)}
+    .cards{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
+    .acard{
+      border-radius:16px; padding:14px;
+      border:1px solid rgba(36,48,87,.7);
+      background: rgba(0,0,0,.16);
+      display:flex; flex-direction:column; gap:10px;
+      min-height: 168px;
+    }
+    .acard b{font-size:15px}
+    .acard p{margin:0; font-size:13px}
+    .acard .links{display:flex; flex-wrap:wrap; gap:8px; margin-top:auto}
+    footer{padding:28px 0 44px; color:var(--muted); font-size:13px}
+    .toast{
+      position:fixed; right:16px; bottom:16px; z-index:50;
+      background:rgba(18,26,51,.95);
+      border:1px solid rgba(36,48,87,.8);
+      padding:10px 12px; border-radius:14px;
+      box-shadow:0 14px 40px rgba(0,0,0,.35);
+      display:none;
+    }
+    .toast.show{display:block}
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .col-6,.col-7,.col-5{grid-column: span 12}
+      nav{justify-content:flex-start}
+      .two{grid-template-columns:1fr}
+      .title{font-size:30px}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <b>Haygood Family Reunion</b>
+      <span>Orlando, Florida • July 2–6, 2026</span>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#rsvp">RSVP</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#payments">Payments</a>
+      <a href="#activities">Orlando Activities</a>
+      <a href="#travel">Travel / FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="home">
+  <section class="hero">
+    <div class="hcard">
+      <h1 class="title">Our Roots Run Deep — Our Love Runs Deeper</h1>
+      <p class="subtitle">
+        Join us for five days of family time, food, fun, and memories in Orlando.
+        Use this site to RSVP, view the schedule, make payments, and book activities.
+      </p>
+
+      <div class="pillrow">
+        <div class="pill">📅 <b>July 2–6, 2026</b> <small>(Thu–Mon)</small></div>
+        <div class="pill">📍 <b>Orlando, FL</b> <small>meetup areas listed below</small></div>
+        <div class="pill">👨‍👩‍👧‍👦 <b>All ages</b> <small>kid-friendly options</small></div>
+      </div>
+
+      <div class="btnrow">
+        <a class="btn primary" href="#rsvp">✅ RSVP Now</a>
+        <a class="btn" href="#schedule">🗓️ View Schedule</a>
+        <a class="btn good" href="#payments">💳 Make a Payment</a>
+      </div>
+
+      <div class="sep"></div>
+
+      <div class="grid">
+        <div class="card col-6">
+          <h3>Countdown</h3>
+          <div class="kpi">
+            <b id="countdown">—</b>
+            <span>until July 2, 2026</span>
+          </div>
+          <p class="note">Tip: share this link with the family so everyone has the same updates.</p>
+        </div>
+
+        <div class="card col-6">
+          <h3>Quick Info</h3>
+          <p><span class="tag">🕒 Check-in</span> July 2 (Thu) • Afternoon/Evening</p>
+          <p><span class="tag">🏨 Hotel</span> Add your chosen hotel details in the Travel/FAQ section.</p>
+          <p><span class="tag">👕 Colors</span> Edit: Family photo colors / t-shirt theme.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hcard">
+      <h2>At-a-glance</h2>
+      <p>Everything here is editable. Replace names/locations once finalized.</p>
+      <div class="sep"></div>
+      <p><b>Primary Meetup Spot:</b><br><span class="note">Add: Hotel / Resort / Airbnb address</span></p>
+      <p><b>Group Chat:</b><br><span class="note">Add: WhatsApp / GroupMe link</span></p>
+      <p><b>Questions?</b><br><span class="note">Email: <a href="mailto:familyreunion@example.com">familyreunion@example.com</a></span></p>
+    </div>
+  </section>
+
+  <section class="grid" id="rsvp">
+    <div class="card col-7">
+      <h2>RSVP</h2>
+      <p>Fill this out once per household. Submissions save to <b>this device</b> (simple & free). For a shared list, connect this form to Google Forms later.</p>
+
+      <form id="rsvpForm">
+        <div class="two">
+          <div>
+            <label>Household Name (Last Name / Main Contact)</label>
+            <input required name="household" placeholder="e.g., Haygood – Earl" />
+          </div>
+          <div>
+            <label>Email</label>
+            <input required type="email" name="email" placeholder="name@email.com" />
+          </div>
+        </div>
+
+        <div class="two">
+          <div>
+            <label>Phone</label>
+            <input name="phone" placeholder="(xxx) xxx-xxxx" />
+          </div>
+          <div>
+            <label>How many in your group?</label>
+            <select required name="count">
+              <option value="">Select…</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="two">
+          <div>
+            <label>Arrival Date</label>
+            <select name="arrival">
+              <option>July 2 (Thu)</option>
+              <option>July 3 (Fri)</option>
+              <option>July 4 (Sat)</option>
+              <option>July 1 (Wed) – early</option>
+            </select>
+          </div>
+          <div>
+            <label>Departure Date</label>
+            <select name="depart">
+              <option>July 6 (Mon)</option>
+              <option>July 5 (Sun)</option>
+              <option>July 7 (Tue) – late</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="two">
+          <div>
+            <label>T-shirt size notes (optional)</label>
+            <input name="shirts" placeholder="e.g., 2 adult L, 1 youth M" />
+          </div>
+          <div>
+            <label>Meal notes (optional)</label>
+            <input name="food" placeholder="allergies / dietary needs" />
+          </div>
+        </div>
+
+        <div>
+          <label>Anything else we should know?</label>
+          <textarea name="notes" placeholder="Mobility needs, celebration notes, etc."></textarea>
+        </div>
+
+        <button class="btn primary" type="submit">Save RSVP</button>
+        <div class="small" id="rsvpHint"></div>
+      </form>
+
+      <div class="sep"></div>
+
+      <div class="btnrow">
+        <button class="btn" id="downloadCsv" type="button">⬇️ Download RSVPs (CSV)</button>
+        <button class="btn" id="clearLocal" type="button">🧹 Clear RSVPs on this device</button>
+      </div>
+
+      <p class="note" style="margin-top:10px">
+        Want RSVPs collected in one place? Replace this form with a Google Form and paste its link here.
+      </p>
+    </div>
+
+    <div class="card col-5">
+      <h2>RSVP Summary</h2>
+      <p>Counts shown are only from this device.</p>
+      <div class="sep"></div>
+      <div class="kpi">
+        <b id="rsvpHouseholds">0</b><span>households saved</span>
+      </div>
+      <div class="kpi" style="margin-top:8px">
+        <b id="rsvpPeople">0</b><span>estimated people</span>
+      </div>
+      <div class="sep"></div>
+      <h3>Next steps</h3>
+      <p class="note">1) Collect RSVPs • 2) Finalize meals/venues • 3) Confirm activities & carpools</p>
+    </div>
+  </section>
+
+  <section class="grid" id="schedule">
+    <div class="card col-12">
+      <h2>Schedule (Editable)</h2>
+      <p>Edit times/locations as your plans become final.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:140px">Date</th>
+            <th style="width:130px">Time</th>
+            <th>Event</th>
+            <th style="width:260px">Location / Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Thu • Jul 2</b></td>
+            <td>4:00–8:00 PM</td>
+            <td>Arrival + Welcome Hangout</td>
+            <td>Primary meetup spot (lobby/pool area)</td>
+          </tr>
+          <tr>
+            <td><b>Fri • Jul 3</b></td>
+            <td>9:30–11:30 AM</td>
+            <td>Brunch + Family Introductions</td>
+            <td>Restaurant / catering (add details)</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Afternoon</td>
+            <td>Free Time / Optional Activity Day</td>
+            <td>See Orlando Activities section</td>
+          </tr>
+          <tr>
+            <td><b>Sat • Jul 4</b></td>
+            <td>10:00 AM–1:00 PM</td>
+            <td>Family Field Day (games, prizes)</td>
+            <td>Park / resort lawn (add address)</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Evening</td>
+            <td>Cookout + Fireworks Plan</td>
+            <td>Grill area / nearby show</td>
+          </tr>
+          <tr>
+            <td><b>Sun • Jul 5</b></td>
+            <td>11:00 AM–2:00 PM</td>
+            <td>Family Photos + Reunion Meal</td>
+            <td>Photographer + banquet space</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>3:00–6:00 PM</td>
+            <td>Talent Show / Game Night</td>
+            <td>Bring cards, board games, music</td>
+          </tr>
+          <tr>
+            <td><b>Mon • Jul 6</b></td>
+            <td>9:00–11:00 AM</td>
+            <td>Farewell Breakfast + Goodbyes</td>
+            <td>Quick meet-up before departures</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="note" style="margin-top:10px">
+        Optional: add a “Rain Plan” line for outdoor events (Orlando can be unpredictable in summer).
+      </p>
+    </div>
+  </section>
+
+  <section class="grid" id="payments">
+    <div class="card col-7">
+      <h2>Payments</h2>
+      <p>Use this section for reunion fees, shirts, meals, or group activities. Replace the links with your real payment handles.</p>
+
+      <div class="sep"></div>
+
+      <h3>Suggested Fee Options (Edit)</h3>
+      <p class="note">Example only — update amounts and what they cover.</p>
+      <table>
+        <thead>
+          <tr><th>Option</th><th>Amount</th><th>Includes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Adult Reunion Fee</td><td>$XX</td><td>Meals + venue + supplies</td></tr>
+          <tr><td>Child Reunion Fee</td><td>$XX</td><td>Kids meals + prizes</td></tr>
+          <tr><td>T-Shirt</td><td>$XX</td><td>One shirt (add sizes in RSVP)</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sep"></div>
+
+      <div class="btnrow">
+        <!-- Replace these with your real links -->
+        <a class="btn primary" href="https://www.paypal.com/" target="_blank" rel="noopener">Pay with PayPal</a>
+        <a class="btn" href="https://venmo.com/" target="_blank" rel="noopener">Pay with Venmo</a>
+        <a class="btn good" href="https://cash.app/" target="_blank" rel="noopener">Pay with Cash App</a>
+      </div>
+
+      <p class="note" style="margin-top:10px">
+        Tip: If you want a “pay what you owe” calculator, tell me your fee rules and I’ll add it.
+      </p>
+    </div>
+
+    <div class="card col-5">
+      <h2>Payment Notes</h2>
+      <p><span class="tag">🧾 Memo</span> Put: “Reunion 2026 + Your Name”</p>
+      <p><span class="tag">⏳ Due Date</span> Set a deadline (ex: May 15, 2026)</p>
+      <p><span class="tag">📌 Refunds</span> Add your policy here</p>
+      <div class="sep"></div>
+      <p class="note">
+        If you prefer a single checkout page (Stripe Payment Link), you can add it as one button here.
+      </p>
+    </div>
+  </section>
+
+  <section class="grid" id="activities">
+    <div class="card col-12">
+      <h2>Orlando Activities (Bookable Links)</h2>
+      <p>Pick what fits your family: thrill parks, animal encounters, science, skyline views, and airboats.</p>
+
+      <div class="cards" style="margin-top:12px">
+        <div class="acard">
+          <b>Universal Orlando Resort</b>
+          <p>Theme parks + rides + Harry Potter areas. Great for teens/adults.</p>
+          <div class="links">
+            <a class="btn" href="https://www.universalorlando.com/web/en/us/tickets-packages/park-tickets" target="_blank" rel="noopener">Tickets</a>
+          </div>
+        </div>
+
+        <div class="acard">
+          <b>Walt Disney World Resort</b>
+          <p>Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom.</p>
+          <div class="links">
+            <a class="btn" href="https://disneyworld.disney.go.com/admission/tickets/" target="_blank" rel="noopener">Tickets</a>
+          </div>
+        </div>
+
+        <div class="acard">
+          <b>Gatorland</b>
+          <p>Classic Florida—gators, shows, and up-close animal experiences.</p>
+          <div class="links">
+            <a class="btn" href="https://www.gatorland.com/tickets/" target="_blank" rel="noopener">Tickets</a>
+          </div>
+        </div>
+
+        <div class="acard">
+          <b>ICON Park – The Orlando Eye</b>
+          <p>Skyline views from the observation wheel on International Drive.</p>
+          <div class="links">
+            <a class="btn" href="https://www.theorlandoeye.com/tickets/" target="_blank" rel="noopener">Tickets</a>
+          </div>
+        </div>
+
+        <div class="acard">
+          <b>Kennedy Space Center (Day Trip)</b>
+          <p>NASA exhibits + rockets. About 45–60 minutes from Orlando.</p>
+          <div class="links">
+            <a class="btn" href="https://tickets.kennedyspacecenter.com/webstore/shop/viewitems.aspx?c=admission&cg=consumer" target="_blank" rel="noopener">Tickets</a>
+          </div>
+        </div>
+
+        <div class="acard">
+          <b>Boggy Creek Airboat Adventures</b>
+          <p>Airboat rides + wildlife — a fun “Florida nature” option.</p>
+          <div class="links">
+            <a class="btn" href="https://bcairboats.com/" target="_blank" rel="noopener">Book</a>
+          </div>
+        </div>
+
+        <div class="acard">
+          <b>Orlando Science Center</b>
+          <p>Hands-on exhibits and kid-friendly learning (great for younger kids).</p>
+          <div class="links">
+            <a class="btn" href="https://www.osc.org/tickets/" target="_blank" rel="noopener">Tickets</a>
+          </div>
+        </div>
+
+        <div class="acard">
+          <b>Discovery Cove</b>
+          <p>All-inclusive day resort with animal encounters (book early).</p>
+          <div class="links">
+            <a class="btn" href="https://discoverycove.com/orlando/pricing/" target="_blank" rel="noopener">Pricing & Booking</a>
+          </div>
+        </div>
+
+        <div class="acard">
+          <b>Build-your-own day</b>
+          <p>Want me to tailor this to your family (ages, budget, mobility)? I can create 2–3 “activity track” options.</p>
+          <div class="links">
+            <a class="btn primary" href="#travel">See Travel/FAQ</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top:12px">
+        Tip: Add “Carpool Groups” under each activity once RSVPs are in.
+      </p>
+    </div>
+  </section>
+
+  <section class="grid" id="travel">
+    <div class="card col-6">
+      <h2>Travel / FAQ</h2>
+      <h3>Where are we staying?</h3>
+      <p class="note">Add your main hotel/resort/Airbnb area + any group rate link.</p>
+
+      <h3>Getting around</h3>
+      <p class="note">Orlando is car-friendly. Consider carpools or rideshare for park days.</p>
+
+      <h3>What should I pack?</h3>
+      <p class="note">Light clothes, comfortable shoes, sunscreen, rain poncho/umbrella, refillable water bottle.</p>
+
+      <h3>Contact</h3>
+      <p class="note">Coordinator: <b>NAME HERE</b> • Phone: <b>###-###-####</b> • Email: <a href="mailto:familyreunion@example.com">familyreunion@example.com</a></p>
+    </div>
+
+    <div class="card col-6">
+      <h2>What’s Next</h2>
+      <p>Use this checklist so planning stays simple.</p>
+      <div class="sep"></div>
+      <p class="note">✅ Collect RSVPs</p>
+      <p class="note">✅ Confirm reunion fee + due date</p>
+      <p class="note">✅ Lock in 1–2 “must-do” activities</p>
+      <p class="note">✅ Choose meal plan (catered vs. potluck vs. restaurants)</p>
+      <p class="note">✅ Finalize shirt design + sizes</p>
+      <div class="sep"></div>
+      <p class="note">
+        Want this to auto-email you every RSVP? Tell me what email you want to receive them at and whether you want Google Forms or a simple mailto setup.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="sep"></div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between">
+      <div>© <span id="year"></span> Haygood Family Reunion • Orlando</div>
+      <div class="note">Made as a free, single-file website you can publish anywhere.</div>
+    </div>
+  </footer>
+</main>
+
+<div class="toast" id="toast">Saved!</div>
+
+<script>
+  // ====== SETTINGS (EDIT THESE) ======
+  const REUNION_START = new Date("2026-07-02T12:00:00-04:00"); // Orlando (ET). Change time if you want.
+  const STORAGE_KEY = "reunion_rsvps_v1";
+
+  // ====== HELPERS ======
+  const $ = (sel) => document.querySelector(sel);
+  const toast = (msg) => {
+    const t = $("#toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    setTimeout(()=>t.classList.remove("show"), 2000);
+  };
+
+  function loadRsvps(){
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
+    catch { return []; }
+  }
+  function saveRsvps(list){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+  }
+  function updateRsvpSummary(){
+    const list = loadRsvps();
+    $("#rsvpHouseholds").textContent = list.length;
+    const people = list.reduce((sum, r) => sum + (parseInt(r.count, 10) || 0), 0);
+    $("#rsvpPeople").textContent = people || 0;
+  }
+
+  // ====== COUNTDOWN ======
+  function updateCountdown(){
+    const now = new Date();
+    const diff = REUNION_START - now;
+    if (diff <= 0){
+      $("#countdown").textContent = "It’s reunion time!";
+      return;
+    }
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff / (1000*60*60)) % 24);
+    const mins = Math.floor((diff / (1000*60)) % 60);
+    $("#countdown").textContent = `${days}d ${hours}h ${mins}m`;
+  }
+
+  // ====== RSVP FORM ======
+  $("#rsvpForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const rsvp = Object.fromEntries(fd.entries());
+    rsvp.savedAt = new Date().toISOString();
+
+    const list = loadRsvps();
+    list.push(rsvp);
+    saveRsvps(list);
+
+    e.target.reset();
+    updateRsvpSummary();
+    $("#rsvpHint").textContent = "Saved on this device. Use “Download RSVPs (CSV)” to share.";
+    toast("RSVP saved ✅");
+  });
+
+  // ====== DOWNLOAD CSV ======
+  $("#downloadCsv").addEventListener("click", () => {
+    const list = loadRsvps();
+    if (!list.length) return toast("No RSVPs to download yet.");
+    const headers = ["household","email","phone","count","arrival","depart","shirts","food","notes","savedAt"];
+    const esc = (v) => `"${String(v ?? "").replaceAll('"','""')}"`;
+    const rows = [headers.join(",")].concat(
+      list.map(r => headers.map(h => esc(r[h])).join(","))
+    );
+    const blob = new Blob([rows.join("\n")], {type:"text/csv;charset=utf-8;"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "family-reunion-rsvps.csv";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    toast("Downloaded CSV ⬇️");
+  });
+
+  $("#clearLocal").addEventListener("click", () => {
+    localStorage.removeItem(STORAGE_KEY);
+    updateRsvpSummary();
+    toast("Cleared ✅");
+  });
+
+  // ====== INIT ======
+  $("#year").textContent = new Date().getFullYear();
+  updateCountdown(); setInterval(updateCountdown, 30_000);
+  updateRsvpSummary();
+</script>
+</body>
+</html>
